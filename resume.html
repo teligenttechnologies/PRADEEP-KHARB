@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resume</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            mont: ['Montserrat', 'sans-serif'],
+          },
+          colors: {
+            primary: '#19c2ad'
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-primary font-mont text-black pt-24">
+
+
+<!-- NAVBAR -->
+<nav class="fixed top-0 w-full bg-white z-50 shadow-sm">
+  <div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-5">
+
+    <!-- Social Icons -->
+    <div class="flex gap-5 text-lg">
+      <i class="fab fa-facebook-f"></i>
+      <i class="fab fa-twitter"></i>
+      <i class="fab fa-instagram"></i>
+      <i class="fab fa-vimeo-v"></i>
+      <i class="fab fa-youtube"></i>
+    </div>
+
+    <!-- Desktop Menu -->
+    <ul class="hidden md:flex gap-10 font-medium text-gray-700">
+      <li><a href="index.html" class="hover:text-teal-500">Home</a></li>
+    </ul>
+
+    <!-- Hamburger Button -->
+    <button onclick="toggleMenu()" class="md:hidden text-2xl">
+      <i id="menuIcon" class="fa-solid fa-bars"></i>
+    </button>
+
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu"
+       class="hidden md:hidden flex flex-col items-center gap-6 py-6 bg-white text-lg font-medium">
+
+    <a href="index.html" class="hover:text-teal-500">Home</a>
+
+  </div>
+</nav>
+
+
+  <!-- RESUME BOX -->
+  <section class="py-10 px-5 mt-24">
+    <div class="max-w-4xl mx-auto">
+      <div class="border-[8px] border-black py-10 text-center">
+        <h1 class="text-4xl md:text-5xl font-extrabold tracking-[12px]">
+          RESUME
+        </h1>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ABOUT ME -->
+  <section class="py-20 px-5">
+    <div class="max-w-4xl mx-auto text-center">
+
+      <h2 class="font-extrabold tracking-[8px] text-3xl md:text-4xl mb-10">
+        ABOUT ME
+      </h2>
+
+      <div class="tracking-[3px] mb-8">
+        Height: 5"11 | Eye Color: Green | Hair Color: Light Brown
+      </div>
+
+      <p class="max-w-2xl mx-auto leading-7">
+        I'm a paragraph. Click here to add your own text and edit me. 
+        It's easy. Just click “Edit Text” or double click me to add your own content 
+        and make changes to the font. I'm a great place for you to tell a story.
+      </p>
+
+    </div>
+  </section>
+
+  <!-- WORK EXPERIENCE -->
+  <section class="py-20 px-5">
+    <div class="max-w-6xl mx-auto">
+
+      <div class="w-3/5 h-[2px] bg-black mx-auto mb-16"></div>
+
+      <h2 class="text-center font-extrabold tracking-[8px] text-3xl md:text-4xl mb-16">
+        WORK EXPERIENCE
+      </h2>
+
+      <!-- Theater -->
+      <div class="flex flex-col md:flex-row justify-center gap-8 md:gap-20 mb-16 text-center md:text-left">
+        <div class="text-xl font-semibold min-w-[150px]">Theater</div>
+        <div class="tracking-[2px] leading-10">
+          Production Company | Project Name | 2035 | Lead Actor <br>
+          Production Company | Project Name | 2035 | Dancer <br>
+          Production Company | Project Name | 2035 | Chorus Member
+        </div>
+      </div>
+
+      <!-- Film -->
+      <div class="flex flex-col md:flex-row justify-center gap-8 md:gap-20 text-center md:text-left">
+        <div class="text-xl font-semibold min-w-[150px]">Film</div>
+        <div class="tracking-[2px] leading-10">
+          Production Company | Project Name | 2035 | Lead Actor <br>
+          Production Company | Project Name | 2035 | Understudy <br>
+          Production Company | Project Name | 2035 | Supporting Actor <br>
+          Production Company | Project Name | 2035 | Extra
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+
+  <!-- TRAINING & WORKSHOPS -->
+  <section class="py-20 px-5">
+    <div class="max-w-6xl mx-auto">
+
+      <div class="w-3/5 h-[2px] bg-black mx-auto mb-16"></div>
+
+      <h2 class="text-center font-extrabold tracking-[8px] text-3xl md:text-4xl mb-16">
+        TRAINING & WORKSHOPS
+      </h2>
+
+      <div class="text-center tracking-[2px] leading-10">
+        Institution | Workshop Name | Instructor <br>
+        Institution | Workshop Name | Instructor <br>
+        Institution | Workshop Name | Instructor
+      </div>
+
+    </div>
+  </section>
+<!-- SPECIAL SKILLS SECTION -->
+<section class="bg-[#19c3b3] text-black py-28 px-6">
+
+  <div class="max-w-4xl mx-auto text-center">
+
+    <!-- Top Line -->
+    <div class="w-full h-[1px] bg-black mb-16"></div>
+
+    <!-- Heading -->
+    <h2 class="text-3xl md:text-4xl tracking-[8px] font-semibold mb-10">
+      SPECIAL SKILLS
+    </h2>
+
+    <!-- Paragraph -->
+    <p class="text-base md:text-lg leading-8 max-w-2xl mx-auto">
+      I'm a paragraph. Click here to add your own text and edit me. It’s easy.
+      Just click “Edit Text” or double click me to add your own content and
+      make changes to the font. I’m a great place for you to tell a story.
+    </p>
+
+    <!-- Bottom Line -->
+    <div class="w-full h-[1px] bg-black mt-16 mb-20"></div>
+
+    <!-- Download Resume -->
+    <h3 class="text-2xl md:text-3xl tracking-[10px] font-semibold">
+      DOWNLOAD FULL RESUME
+    </h3>
+    <a href="resume.pdf" download
+   class="inline-block mt-10 px-10 py-4 
+          border-2 border-black 
+          text-black font-semibold tracking-widest
+          hover:bg-black hover:text-white 
+          transition duration-300">
+   DOWNLOAD FULL RESUME
+</a>
+
+  </div>
+
+</section>
+<!-- FOOTER STRIP -->
+<section class="bg-white py-6 relative">
+
+  <div class="max-w-6xl mx-auto flex items-center justify-center relative text-sm text-black">
+    
+    © 2035 by Actor & Model.
+
+    <!-- Scroll To Top Button -->
+    <button onclick="scrollToTop()"
+      class="absolute right-0 bg-black text-white w-10 h-10 flex items-center justify-center hover:opacity-80 transition">
+      ↑
+    </button>
+
+  </div>
+
+</section>
+<script>
+function toggleMenu(){
+  const menu = document.getElementById("mobileMenu");
+  const icon = document.getElementById("menuIcon");
+
+  menu.classList.toggle("hidden");
+
+  if(menu.classList.contains("hidden")){
+    icon.classList.remove("fa-xmark");
+    icon.classList.add("fa-bars");
+  } else {
+    icon.classList.remove("fa-bars");
+    icon.classList.add("fa-xmark");
+  }
+}
+</script>
+
+<script>
+  function scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  }
+</script>
+
+</body>
+</html>
