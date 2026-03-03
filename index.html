@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PRADEEP KHARB</title>
 <script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r83/three.js"></script>
+<script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1295275/webgl-hover_min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600;800&display=swap" rel="stylesheet">
@@ -29,6 +32,29 @@ body{font-family:'Montserrat',sans-serif}
   background-size:cover;
   background-position:center;
 }
+</style>
+<style>
+  /* canvas container जो image के ऊपर बैठेगा */
+  .webgl-hover {
+    position: absolute;
+    inset: 0;
+    z-index: 1; /* image से ऊपर, overlay से नीचे */
+  }
+  /* overlay content ऊपर रहे */
+  #gallery .overlay-on-top {
+    position: relative;
+    z-index: 2;
+  }
+  /* original img hidden (layout वही रहेगा) */
+  #gallery .js-hide-img {
+    opacity: 0;
+  }
+  /* canvas full fit */
+  .webgl-hover canvas {
+    width: 100% !important;
+    height: 100% !important;
+    display: block;
+  }
 </style>
 </head>
 <body class="scroll-smooth bg-primary font-mont text-black pt-24">
@@ -420,7 +446,47 @@ window.addEventListener("scroll", () => {
 
 });
 </script>
+<script>
+  // 1 displacement image (same like Niika)
+  const DISPLACEMENT =
+    "https://cdn.prod.website-files.com/5b367b755b093e453cec2141/5bc9486cdc837c82711dfb73_displacement-4.png";
 
+  // Gallery ke sab image boxes
+  const boxes = document.querySelectorAll("#gallery .group.overflow-hidden");
+
+  boxes.forEach((box, i) => {
+    const img = box.querySelector("img");
+    if (!img) return;
+
+    // overlay div ko top pe rakho (without changing your HTML)
+    const overlay = box.querySelector(".absolute.inset-0");
+    if (overlay) overlay.classList.add("overlay-on-top");
+
+    // WebGL container inject
+    const webglDiv = document.createElement("div");
+    webglDiv.className = "webgl-hover";
+    box.insertBefore(webglDiv, img);
+
+    // Original img hide (layout same)
+    img.classList.add("js-hide-img");
+
+    const image1 = img.getAttribute("src");
+
+    // image2: agar tum chaho to data-image2 de sakte ho, warna same image use hoga
+    const image2 = box.getAttribute("data-image2") || image1;
+
+    // Hover effect attach
+    new hoverEffect({
+      parent: webglDiv,
+      intensity1: 0.25,
+      intensity2: 0.25,
+      angle2: Math.PI / 2,
+      image1,
+      image2,
+      displacementImage: DISPLACEMENT
+    });
+  });
+</script>
 
 
 </body>
