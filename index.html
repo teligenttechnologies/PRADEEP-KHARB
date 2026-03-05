@@ -32,6 +32,38 @@ body{font-family:'Montserrat',sans-serif}
   background-size:cover;
   background-position:center;
 }
+
+.badge{
+width:140px;
+height:140px;
+margin-top:20px;
+}
+
+.badge svg{
+width:100%;
+height:100%;
+display:block;
+}
+
+.base{
+fill:#111;
+}
+
+.ringText{
+fill:#fff;
+font-size:20px;
+letter-spacing:4px;
+font-weight:600;
+dominant-baseline:middle;
+}
+
+.centerText{
+fill:white;
+font-size:48px;
+font-weight:600;
+letter-spacing:2px;
+font-family:Inter;
+}
 </style>
 <style>
   /* canvas container जो image के ऊपर बैठेगा */
@@ -135,7 +167,6 @@ body{font-family:'Montserrat',sans-serif}
 </section>
 
 
-
 <!-- ABOUT -->
 <section id="about" class="bg-teal-500 py-24">
 <div class="max-w-7xl mx-auto grid md:grid-cols-2 items-center">
@@ -145,16 +176,44 @@ body{font-family:'Montserrat',sans-serif}
 </div>
 
 <div class="px-16 text-black">
+
   <h2 class="text-5xl font-bold mb-8 tracking-widest">ABOUT ME!</h2>
+
   <p class="mb-8 leading-8">
     I'm a paragraph. Click here to add your own text and edit me.
     I'm a great place for you to tell a story and let your users know
     a little more about you.
   </p>
- <a href="https://www.imdb.com/name/nm2977968/" target="_blank"
-   class="inline-block bg-black text-white px-8 py-4">
-  See Resume
-</a>
+
+  <a href="https://www.imdb.com/name/nm2977968/" target="_blank"
+     class="inline-block bg-black text-white px-8 py-4 mb-10">
+    See Resume
+  </a>
+
+<div class="badge">
+  <svg viewBox="0 0 220 220">
+    <defs>
+      <path class="circlePath"
+        d="M110,110 m-75,0
+        a75,75 0 1,1 150,0
+        a75,75 0 1,1 -150,0"/>
+    </defs>
+
+    <circle cx="110" cy="110" r="95" class="base"></circle>
+
+    <g class="badgeRotator">
+      <text class="ringText">
+        <textPath href="" startOffset="50%" text-anchor="middle">
+          PRADEEPKHARB PRADEEPKHARB
+        </textPath>
+      </text>
+    </g>
+
+    <text x="110" y="110" text-anchor="middle" dominant-baseline="middle" class="centerText">
+      PK
+    </text>
+  </svg>
+</div>
 
 </div>
 
@@ -305,6 +364,30 @@ body{font-family:'Montserrat',sans-serif}
         <i class="fab fa-vimeo-v"></i>
         <i class="fab fa-youtube"></i>
       </div>
+      <div class="badge">
+  <svg viewBox="0 0 220 220">
+    <defs>
+      <path class="circlePath"
+        d="M110,110 m-75,0
+        a75,75 0 1,1 150,0
+        a75,75 0 1,1 -150,0"/>
+    </defs>
+
+    <circle cx="110" cy="110" r="95" class="base"></circle>
+
+    <g class="badgeRotator">
+      <text class="ringText">
+        <textPath href="" startOffset="50%" text-anchor="middle">
+          PRADEEP KHARB • PRADEEP KHARB •
+        </textPath>
+      </text>
+    </g>
+
+    <text x="110" y="110" text-anchor="middle" dominant-baseline="middle" class="centerText">
+      PK
+    </text>
+  </svg>
+</div>
 
     </div>
 
@@ -444,6 +527,24 @@ window.addEventListener("scroll", () => {
     }
   }
 
+});
+document.querySelectorAll(".badge").forEach((badge, i) => {
+  const svg = badge.querySelector("svg");
+  const path = badge.querySelector(".circlePath");
+  const rotator = badge.querySelector(".badgeRotator");
+  const textPath = badge.querySelector("textPath");
+
+  // unique id per badge (important)
+  const uniqueId = `circlePath-${i}`;
+  path.setAttribute("id", uniqueId);
+  textPath.setAttribute("href", `#${uniqueId}`);
+
+  const speed = 0.35;
+
+  window.addEventListener("scroll", () => {
+    const deg = window.scrollY * speed;
+    rotator.setAttribute("transform", `rotate(${deg} 110 110)`);
+  });
 });
 </script>
 <script>
